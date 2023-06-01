@@ -2,44 +2,64 @@ import "./styles/index.css";
 
 const btn = document.querySelector('button');
 
-type repoData = {
-  id: number,
-  node_id: string,
+const loader = document.querySelector(".loader");
+
+type repoObject = {
   name: string,
-  full_name: string,
-  private: boolean,
+  html_url: string,
+  description: string,
+  language: string,
+  owner: {
+    avatar_url: string,
+    login: string,
+    html_url: string;
+  };
+};
+
+const displayLoading = (els: [repoObject]) => {
+  loader.classList.add("display");
+  setTimeout(() => {
+    els.forEach((element: repoObject) => {
+      createSectionList(element);
+    });
+
+    createAsideProfile(els[0]);
+
+    hideLoading();
+  }, 5000);
+};
+
+const hideLoading = () => {
+  loader.classList.remove("display");
 };
 
 const callGitHubApi = async (user: string) => {
   const url = `https://api.github.com/users/${user}/repos`;
   const data = await (await fetch(url)).json();
-  console.log(data);
-
   return data;
 };
 
 const structureData = async () => {
   const userName = document.querySelector('input').value;
   const repos = await callGitHubApi(userName);
-  repos.forEach((element: object) => {
-    createSectionList(element);
-  });
-  createAsideProfile(repos[0]);
+  displayLoading(repos);
 };
+
 const templateProfile = document.getElementsByTagName('template')[0];
 const templateList = document.getElementsByTagName("template")[1];
 
-const createAsideProfile = (data: any) => {
+const createAsideProfile = (data: repoObject) => {
   const clone = document.importNode(templateProfile, true);
 
   clone.content.querySelector('.repo-owner-img').setAttribute('src', data.owner.avatar_url);
   clone.content.querySelector('.repo-owner-name').textContent = data.owner.login;
   clone.content.querySelector('.repo-owner-name').setAttribute('href', data.owner.html_url);
+
   const aside = clone.content.cloneNode(true);
   document.querySelector('aside').append(aside);
 };
 
-const createSectionList = (data: any) => {
+const createSectionList = (data: repoObject) => {
 
   const clone = document.importNode(templateList, true);
 
@@ -67,13 +87,12 @@ const createSectionList = (data: any) => {
   if (data.language === 'Coffeescript') clone.content.querySelector('.item-language').setAttribute('class', 'coffeescript');
   if (data.language === 'Objective-C') clone.content.querySelector('.item-language').setAttribute('class', 'objective-c');
 
-
   const section = clone.content.cloneNode(true);
   document.body.append(section);
 };
 
 btn.addEventListener('click', () => {
   if (document.querySelector('.repo')) document.querySelectorAll('.repo').forEach(e => e.remove());
-  structureData();
   if (document.querySelector('.repo-owner-profile')) document.querySelector('.repo-owner-profile').remove();
+  structureData();
 });
