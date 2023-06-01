@@ -26,7 +26,7 @@ const displayLoading = (els: [repoObject]) => {
     createAsideProfile(els[0]);
 
     hideLoading();
-  }, 5000);
+  }, 3000);
 };
 
 const hideLoading = () => {
