@@ -3,4 +3,251 @@
 @tailwind utilities;
 
 body {
+  background-color: #0d1117;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding-top: 10px;
+  margin-top: 25px;
+}
+
+button {
+  color: #fff;
+  background-color: #238636;
+  border: 1px solid grey;
+  border-radius: 10px;
+  padding: 2px 5px;
+  margin-left: 10px;
+}
+
+.repo-name {
+  color: #388bfd;
+  cursor: pointer;
+  height: fit-content;
+}
+
+.repo-name:hover {
+  color: #61a0f8;
+}
+
+p {
+  color: #7d8590;
+  height: fit-content;
+}
+
+.stars,
+.forks {
+  color: #7d8590;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #30363d;
+  border-radius: 5px;
+  width: 75%;
+  padding: 16px;
+  max-width: 600px;
+  min-height: 106px;
+  margin-top: 10px;
+}
+
+aside {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.repo:last-child {
+  margin-bottom: 10px;
+}
+
+.repo-owner-profile {
+  color: #7d8590;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+section:hover {
+  border-color: #5a6471;
+}
+
+.stars:hover,
+.forks:hover {
+  color: #b1bbc8;
+}
+
+.top-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 0.4rem;
+}
+
+.bottom-row {
+  display: grid;
+  grid-template-columns: 16fr 1fr 1fr;
+}
+
+.repo-description {
+  margin-bottom: 0.4rem;
+}
+
+svg {
+  color: green;
+}
+
+.fork {
+  transform: rotate(-90deg);
+}
+
+.textbox {
+  text-align: center
+}
+
+input {
+  border-radius: 5px;
+}
+
+input::placeholder {
+  font-style: italic;
+}
+
+.loader {
+
+  margin-top: 20%;
+  border: 16px solid #f3f3f3;
+  /* Light grey */
+  border-top: 16px solid #3498db;
+  /* Blue */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-bottom {
+  position: relative;
+  -webkit-animation-name: animatebottom;
+  -webkit-animation-duration: 1s;
+  animation-name: animatebottom;
+  animation-duration: 1s
+}
+
+@-webkit-keyframes animatebottom {
+  from {
+    bottom: -100px;
+    opacity: 0
+  }
+
+  to {
+    bottom: 0px;
+    opacity: 1
+  }
+}
+
+@keyframes animatebottom {
+  from {
+    bottom: -100px;
+    opacity: 0
+  }
+
+  to {
+    bottom: 0;
+    opacity: 1
+  }
+}
+
+
+.javascript {
+  color: #f1e05a;
+}
+
+.typescript {
+  color: #3178c6;
+}
+
+.html {
+  color: #e34c26;
+}
+
+.css {
+  color: #563d7c;
+}
+
+.scss {
+  color: #c6538c;
+}
+
+.java {
+  color: #b07219;
+}
+
+.rust {
+  color: #dea584;
+}
+
+.shell {
+  color: #89e051;
+}
+
+.c-sharp {
+  color: #178600
+}
+
+.c-plus-plus {
+  color: #f34b7d;
+}
+
+.nunjucks {
+  color: #3d8137;
+}
+
+.c {
+  color: #555555;
+}
+
+.hcl {
+  color: #844FBA;
+}
+
+.dockerfile {
+  color: #384d54;
+}
+
+.go {
+  color: #00ADD8;
+}
+
+.coffeescript {
+  color: #244776;
+}
+
+.objective-c {
+  color: #438eff;
 }

@@ -1,0 +1,1 @@
+ window.open(url); linking the section to url
